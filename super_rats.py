@@ -36,9 +36,23 @@ def select(population, to_retain):
     sorted_population = sorted(population)
     to_retain_by_sex = to_retain //2
     members_per_sex = len(sorted_population)//2
-    females = sorted_population[:members_per_sex]
-    males = sorted_population[members_per_sex:]
-    selected_females = females[-to_retain_by_sex:]
-    selected_males = males[-to_retain_by_sex:]
-    return selected_males, selected_females
+    females = sorted_population[:members_per_sex] # first half of the sorted array 
+    males = sorted_population[members_per_sex:] # last half of the sorted array
+    selected_females = females[-to_retain_by_sex:] # take the top number 
+    selected_males = males[-to_retain_by_sex:] # take the top number - parents of next gen 
+    return selected_males, selected_females # return the tuple of selected males and females 
+
+#Assume that the weight of each child is lesser or equal to father and more or equal to mother  
+def breed(males, females, litter_size): 
+    """Crossover genes among weights of a population"""
+
+    random.shuffle(males)
+    random.shuffle(females)
+    children = []
+    for male, female in zip(males, females): 
+        for child in range(litter_size):
+            child = random.randint(female, male)
+            child.append(child)
+    return children
+
 
