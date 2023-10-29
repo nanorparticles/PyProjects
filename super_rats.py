@@ -90,4 +90,10 @@ def main():
     print("average weight per generation = {}".format(ave_wt))
     print("\nnumber of generations = {}".format(generations))
     print("number of years = {}".format(int(generations/LITTERS_PER_YEAR)))
-      
+    
+if __name__ == '__main__': 
+    start_time = time.time()
+    main()
+    end_time = time.time()
+    duration = end_time - start_time
+    print("\nRuntime for this program was {} seconds.".format(duration))
