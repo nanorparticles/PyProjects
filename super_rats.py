@@ -46,13 +46,23 @@ def select(population, to_retain):
 def breed(males, females, litter_size): 
     """Crossover genes among weights of a population"""
 
-    random.shuffle(males)
+    random.shuffle(males) # Shuffle the pairings of males and females  
     random.shuffle(females)
     children = []
-    for male, female in zip(males, females): 
-        for child in range(litter_size):
-            child = random.randint(female, male)
-            child.append(child)
-    return children
+    for male, female in zip(males, females): # create pairs of males and females 
+        for child in range(litter_size): # up to litter size number of children
+            child = random.randint(female, male) # each weighing in between female and male 
+            children.append(child) # append child to the children array
+    return children # return the children 
+
+# A small percentage of the children will experience a mutation 
+# Usually this means runts but this can also mean heavier ones that survive 
+
+def mutate(children, mutate_odds, mutate_min, mutate_max):
+    """Randomly alter rat weights using input odds and fractional changes"""
+    for index, rat in enumerate(children): 
+        if mutate_odds >= random.random(): 
+            children[index] = round(rat* random.uniform(mutate_min, mutate_max))
+    return children 
 
 
