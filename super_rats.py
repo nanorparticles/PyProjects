@@ -70,8 +70,9 @@ def mutate(children, mutate_odds, mutate_min, mutate_max):
 def main(): 
     """Initialize population, select, breed, mutate, display results"""
     generations = 0
-    parents = populate(NUM_RATS, INITIAL_MIN_WT, INITIAL_MAX_WT, INITIAL_MODE_WT)
-    print("Initial Population Weights = {} ".format(parents))
+    parents = populate(NUM_RATS, INITIAL_MIN_WT, INITIAL_MAX_WT, INITIAL_MODE_WT) # Returns a populated list 
+
+    print("Initial Population Weights = {} ".format(parents)) # Prints out initial population
     popl_fitness = fitness(parents, GOAL)
     print("initial population fitness = {}".format(popl_fitness))
     print("number to retain = {}".format(NUM_RATS)) 
